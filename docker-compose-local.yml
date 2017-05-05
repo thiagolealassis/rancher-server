@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+
+  nginx:
+    image: jwilder/nginx-proxy:alpine-0.6.0
+    hostname: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - application
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 9
+        window: 120s
+
+  rancher-server:
+    image: rancher/server:v1.5.8
+    environment:
+      JAVA_OPTS: "-Xms4096m -Xmx4096m"
+      VIRTUAL_HOST: dev-rancher.ccee.org.br
+      VIRTUAL_PORT: 8080
+      CATTLE_DB_CATTLE_MYSQL_HOST: mysql
+      CATTLE_DB_CATTLE_MYSQL_PORT: 3306
+      CATTLE_DB_CATTLE_MYSQL_NAME: cattle
+      CATTLE_DB_CATTLE_USERNAME: cattle
+      CATTLE_DB_CATTLE_PASSWORD: cattle123
+    networks:
+      - application
+      - database
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 9
+        window: 120s
+
+  mysql:
+    image: mysql:5.7.18
+    hostname: mysql
+    environment:
+      MYSQL_DATABASE: cattle
+      MYSQL_USER: cattle
+      MYSQL_PASSWORD: cattle123
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: ""
+    volumes:
+      - mysql-data:/var/lib/mysql:rw
+    networks:
+      - database
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 9
+        window: 120s
+
+volumes:
+
+  mysql-data:
+
+networks:
+
+  application:
+
+  database:
