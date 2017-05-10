@@ -1,1 +1,1 @@
-docker stack deploy -c docker-compose-local.yml rancher-server
+docker stack deploy -c docker-compose.yml rancher-server

@@ -4,54 +4,64 @@ services:
 
   nginx:
     image: jwilder/nginx-proxy:alpine-0.6.0
-    container_name: nginx
     hostname: nginx
     ports:
-      - "443:443"
+      - "80:80"
     volumes:
-      - /etc/pki/tls/private/ccee.com.br.key:/etc/nginx/certs/ccee.com.br.key:ro
-      - /etc/pki/tls/certs/ccee.com.br.crt:/etc/nginx/certs/ccee.com.br.crt:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       - application
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 9
+        window: 120s
 
   rancher-server:
     image: rancher/server:v1.5.8
-    container_name: rancher-server
-    hostname: rancher-server
     environment:
-      - VIRTUAL_HOST=dev-rancher.ccee.org.br
-      - VIRTUAL_PORT=8080
-      - CATTLE_DB_CATTLE_MYSQL_HOST=mysql
-      - CATTLE_DB_CATTLE_MYSQL_PORT=3306
-      - CATTLE_DB_CATTLE_MYSQL_NAME=cattle
-      - CATTLE_DB_CATTLE_USERNAME=cattle
-      - CATTLE_DB_CATTLE_PASSWORD=cattle123
+      JAVA_OPTS: "-Xms3072m -Xmx3072m"
+      VIRTUAL_HOST: rancher.xprime.co
+      VIRTUAL_PORT: 8080
+      CATTLE_DB_CATTLE_MYSQL_HOST: mysql
+      CATTLE_DB_CATTLE_MYSQL_PORT: 3306
+      CATTLE_DB_CATTLE_MYSQL_NAME: cattle
+      CATTLE_DB_CATTLE_USERNAME: cattle
+      CATTLE_DB_CATTLE_PASSWORD: cattle123
     networks:
       - application
       - database
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 9
+        window: 120s
 
   mysql:
     image: mysql:5.7.18
-    container_name: mysql
     hostname: mysql
     environment:
-      - MYSQL_DATABASE=cattle
-      - MYSQL_USER=cattle
-      - MYSQL_PASSWORD=cattle123
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-      - MYSQL_ROOT_PASSWORD=""
+      MYSQL_DATABASE: cattle
+      MYSQL_USER: cattle
+      MYSQL_PASSWORD: cattle123
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: ""
     volumes:
-      - rancher-db:/var/lib/mysql:rw
+      - mysql-data:/var/lib/mysql:rw
     networks:
       - database
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 9
+        window: 120s
 
 volumes:
 
-  rancher-db:
+  mysql-data:
 
 networks:
 

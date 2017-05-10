@@ -1,0 +1,100 @@
+{
+    "organizations": [
+        {
+            "address_line2": null,
+            "address_country_code": "BR",
+            "address_line1": "Rua M\u00e1rio Augusto do Carmo 524, ap 61",
+            "support_level": "basic",
+            "name": "Thiago Leal Assis",
+            "modification_date": "2017-05-05T22:25:53.284689+00:00",
+            "currency": "EUR",
+            "locale": "en_US",
+            "customer_class": "individual",
+            "support_id": "927021",
+            "creation_date": "2016-03-11T15:11:17.400125+00:00",
+            "address_postal_code": "03227070",
+            "address_city_name": "S\u00e3o Paulo",
+            "address_subdivision_code": "BR-SP",
+            "timezone": "UTC",
+            "vat_number": null,
+            "support_pin": "3328",
+            "id": "c65ff546-ee3f-46ed-9390-da4ae52fca0e",
+            "warnings": [
+                {
+                    "reason": "validate_tos",
+                    "locked_at": "2016-03-11T15:11:17.400125+00:00",
+                    "opened_at": "2016-03-11T15:11:17.400125+00:00",
+                    "closable_by_user": true,
+                    "closed": true,
+                    "closed_at": "2016-03-11T15:13:22.490976+00:00",
+                    "locking": true,
+                    "id": "f40e8549-d4f2-43ff-9fdd-838d379fd4e4"
+                },
+                {
+                    "reason": "billing_info_missing",
+                    "locked_at": "2016-03-11T15:11:17.400125+00:00",
+                    "opened_at": "2016-03-11T15:11:17.400125+00:00",
+                    "closable_by_user": false,
+                    "closed": true,
+                    "closed_at": "2016-03-11T16:29:46.601870+00:00",
+                    "locking": true,
+                    "id": "206db141-2295-4387-93d5-b83605a02731"
+                },
+                {
+                    "reason": "payment_info_missing",
+                    "locked_at": "2016-03-11T15:11:17.400125+00:00",
+                    "opened_at": "2016-03-11T15:11:17.400125+00:00",
+                    "closable_by_user": false,
+                    "closed": true,
+                    "closed_at": "2016-03-11T16:40:57.888189+00:00",
+                    "locking": true,
+                    "id": "904b405e-ace5-418e-8c75-619be1d56a68"
+                },
+                {
+                    "reason": "phone_missing",
+                    "locked_at": null,
+                    "opened_at": "2016-03-11T15:11:17.400125+00:00",
+                    "closable_by_user": false,
+                    "closed": true,
+                    "closed_at": "2016-03-11T16:40:57.888189+00:00",
+                    "locking": false,
+                    "id": "abef629f-ff39-4ab2-8fde-f2d6a456d3d8"
+                }
+            ],
+            "users": [
+                {
+                    "phone_number": null,
+                    "double_auth_enabled": false,
+                    "firstname": "Thiago",
+                    "lastname": "Assis",
+                    "creation_date": "2016-03-11T15:11:17.400125+00:00",
+                    "ssh_public_keys": [
+                        {
+                            "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWSgLmyAo7t+zy/HiyPYU8t4mvOGg1jIBSMz7OPUCXSAILvpmaoIRIiM/R3JECt7xksajRmH3H21bsX4dPZ06Z1Xx98rfTl1gJEl51JMjwP3TGC3t9pGA3YwaWMg8bWvlJOPRE7RB7OlPPxDFe6CIeobBBAU+tzC176HcG4o57qY+WlVwIq8mDbqFeQoJKaY8E/S6IrpJIkAHzgc1LAeMAd7j+SRuxw2tEKMyL0agVRnCv1IvL08wA03Thwmj3nHm9CVgYOiegPYocNOpSt+nkxSBVgPxhPQyVSSeUTfQicm6XIHC7WWziOr3Cy1VQsOuegBlxhM/9AYEyvS28xDNh Thiago@C02LN4Q3FD57.local",
+                            "fingerprint": "2048 22:bb:b8:de:5c:41:07:40:fe:d6:cf:6a:7f:bd:63:bb  Thiago@C02LN4Q3FD57.local (RSA)"
+                        }
+                    ],
+                    "id": "acb6ff02-aa75-4967-9551-fe6daedae4df",
+                    "organizations": [
+                        {
+                            "id": "c65ff546-ee3f-46ed-9390-da4ae52fca0e",
+                            "name": "Thiago Leal Assis"
+                        }
+                    ],
+                    "modification_date": "2016-09-12T15:21:34.167480+00:00",
+                    "roles": [
+                        {
+                            "organization": {
+                                "id": "c65ff546-ee3f-46ed-9390-da4ae52fca0e",
+                                "name": "Thiago Leal Assis"
+                            },
+                            "role": "admin"
+                        }
+                    ],
+                    "fullname": "Thiago Assis",
+                    "email": "thiago.assis@xprime.co"
+                }
+            ]
+        }
+    ]
+}
