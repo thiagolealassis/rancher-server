@@ -43,16 +43,18 @@ brew update
 brew tap scaleway/scaleway
 brew install scaleway/scaleway/docker-machine-driver-scaleway
 
+nmap -p 80,8080 51.15.132.183
+docker run -p 80:80/tcp "karthequian/helloworld:latest"
+
 docker-machine create -d scaleway \
     --scaleway-organization=c65ff546-ee3f-46ed-9390-da4ae52fca0e \
     --scaleway-token=a7c1b9b9-7c92-4c42-aac5-2c8d76ea52b6 \
     --scaleway-name="rancher-server" \
     --scaleway-commercial-type="C2S" \
-    --scaleway-volumes="50G" \
-    --scaleway-ip="51.15.132.183" \
     --scaleway-image=docker \
     rancher-server
 
+docker-machine ssh rancher-server apt-get install nmap
 docker-machine ssh rancher-server apt-get update
 docker-machine ssh rancher-server apt-get install docker-engine
 docker-machine ssh rancher-server docker swarm init
